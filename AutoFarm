@@ -1,0 +1,25 @@
+--Settings
+_G.Enabled = false
+local targetN = "DATA"
+local NpcFolder = game.Workspace[] --Target to good folder where the NPC or other things are.
+
+--Variable
+local player = game.Players.LocalPlayer
+
+--Autofarm
+while true do
+    if _G.Enabled == true then
+            if NpcFolder[targetN]:FindFirstChild("HumanoidRootPart") and NpcFolder[targetN]:FindFirstChild("Humanoid") and NpcFolder[targetN].Health.Value > 0 and player.Character:FindFirstChild("HumanoidRootPart") then
+                repeat
+                    if player.Character:FindFirstChild("HumanoidRootPart") and NpcFolder[targetN]:FindFirstChild("HumanoidRootPart") then
+                        player.Character.HumanoidRootPart.CFrame = NpcFolder[targetN].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
+                    end
+                    wait()
+                    
+                    -- Hit Remote or simulate mouseclick
+                    
+                until v == nil or v.Parent == nil or not NpcFolder[targetN]:FindFirstChild("Humanoid") or NpcFolder[targetN].Health.Value <= 0
+            end
+    end
+    wait()
+end
